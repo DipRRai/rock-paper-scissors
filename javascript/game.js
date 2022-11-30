@@ -39,8 +39,23 @@ function playRound(playerSelection, computerSelection, score) {
             score[1] = score[1]+1;
         }
     }
+<<<<<<< Updated upstream
     console.log("player close: " + playerSelection + " computer chose: " + computerSelection + gameState);
     return(score);
+=======
+    if (score[0] == 5){
+        status.textContent = "Player wins";
+    } else if (score[1] == 5){
+        status.textContent = "Computer wins";
+    }
+    else {
+        let temp = document.createElement('p');
+        temp.textContent = "player close: " + playerSelection + " computer chose: " + computerSelection + gameState
+        output.insertBefore(temp,output.firstChild);
+        return(score);
+    }
+    
+>>>>>>> Stashed changes
 }
 
 function startGame() {
