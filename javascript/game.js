@@ -53,17 +53,6 @@ function playRound(playerSelection, computerSelection, score) {
     
 }
 
-function startGame() {
-    let playerSelection = prompt("Rock, Paper or Scissors?");
-    playerSelection = playerSelection.toString().toLowerCase();
-    const validSelection = ['rock','paper','scissors'];
-    if (validSelection.includes(playerSelection) == false) {
-        startGame();
-    } else {
-        return(playerSelection)
-    }
-}
-
 function playing(e){
     let computerSelection = computerPlay();
     let playerSelection = this.textContent;
