@@ -39,8 +39,18 @@ function playRound(playerSelection, computerSelection, score) {
             score[1] = score[1]+1;
         }
     }
-    console.log("player close: " + playerSelection + " computer chose: " + computerSelection + gameState);
-    return(score);
+    if (score[0] == 5){
+        status.textContent = "Player wins";
+    } else if (score[1] == 5){
+        status.textContent = "Computer wins"
+    }
+    else {
+        let temp = document.createElement('p');
+        temp.textContent = "player close: " + playerSelection + " computer chose: " + computerSelection + gameState
+        output.insertBefore(temp,output.firstChild);
+        return(score);
+    }
+    
 }
 
 function startGame() {
@@ -54,11 +64,17 @@ function startGame() {
     }
 }
 
+function playing(e){
+    let computerSelection = computerPlay();
+    let playerSelection = this.textContent;
+    score = playRound(playerSelection, computerSelection, score);
+    status.textContent=("You: " + score[0] + " Computer: " + score[1]);
+    
+}
+
 
 let score = [0,0]
-for (let i = 0;i < 5; i++){
-    let computerSelection = computerPlay();
-    let playerSelection = startGame();
-    score = playRound(playerSelection, computerSelection, score);
-    console.log("You: " + score[0] + " Computer: " + score[1]);
-}
+const output = document.querySelector('.output');
+const status = document.querySelector('.scoreboard');
+const plays = document.querySelectorAll('.gamechoice', );
+plays.forEach(play => play.addEventListener('click', playing));
